@@ -1,6 +1,8 @@
-import '../../App.css'
+import '../../../App.css'
 
-export function Modal(){
+
+
+export function Registration(){
 
     return(
         <div className="border grid grid-cols-1 gap-3 text-center border-gray-200
@@ -10,6 +12,12 @@ export function Modal(){
                 
                 <div className='border-b-2 mt-5 mb-5'>
                     <div className='before:border-6 before:bg-black before:border-white before:rounded-2xl before:size-6 before:absolute before:-translate-y-1/2 before:-translate-x-3'></div>
+                </div>
+
+                <div>
+                    <form>
+                        <h1></h1>
+                    </form>
                 </div>
 
                 
