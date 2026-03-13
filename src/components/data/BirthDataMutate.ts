@@ -13,7 +13,7 @@ const postData = async(data: BirthData): Promise<WeatherStats> => {
 
 export function useBirthDataMutate(){
     const queryClient = useQueryClient();
-    const mutate = useMutation({
+    const mutateData = useMutation({
         mutationFn: postData,
         retry: 3,
         onSuccess: (data) => {
@@ -21,5 +21,5 @@ export function useBirthDataMutate(){
             queryClient.invalidateQueries({queryKey:['birthweather']})
         }
     })
-    return mutate;
+    return mutateData;
 }
