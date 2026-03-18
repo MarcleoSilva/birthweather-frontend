@@ -4,6 +4,7 @@ import { useBirthDataMutate } from '../data/BirthDataMutate';
 import { IoSend } from 'react-icons/io5';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import Divisor from '../ui/Divisor';
 
 
 interface InputProps {
@@ -52,9 +53,7 @@ export function Registration(){
                 <div>
                     <h1 className="font-(family-name:--primary-font) text-4xl font-bold">How was the weather on <span className="italic">your </span>Day One?</h1>
                     
-                    <div className='border-b-2 mt-5 mb-5'>
-                        <div className='before:border-6 before:bg-black before:border-white before:rounded-2xl before:size-6 before:absolute before:-translate-y-1/2 before:-translate-x-3'></div>
-                    </div>
+                    <Divisor/>
 
                     <div>
                         <form className='grid grid-cols-1 text-center gap-3 place-items-center'>
