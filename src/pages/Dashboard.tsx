@@ -21,7 +21,9 @@ export default function Dashboard(){
 function getBackgroundImage({isRaining}:{isRaining: string}){
     if (isRaining == "No rain")
         return "url(/sunnyday.gif)"
+    if (isRaining == "Heavy rain")
+        return "url(https://i.pinimg.com/originals/e0/ea/8a/e0ea8a2b4888e8f730098bdd023ca379.gif)"
     else {
-        return "url(https://cdnb.artstation.com/p/assets/images/images/023/743/143/original/valentin-hume-rainymoodresized.gif?1580214826)"
+        return "url(https://i.pinimg.com/originals/c1/a9/3a/c1a93a1d0de0059a3119b8b1a55ce582.gif)"
     }
 }
