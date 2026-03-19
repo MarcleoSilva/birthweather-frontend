@@ -5,6 +5,8 @@ import { IoSend } from 'react-icons/io5';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import Divisor from '../ui/Divisor';
+import NotificationBox from '../ui/NotificationBox';
+import useNotification from '../hooks/useNotification';
 
 
 interface InputProps {
@@ -31,7 +33,7 @@ export function Registration(){
     const [date, setDate] = useState("");
     const [city, setCity] = useState("");
     const [country, setCountry] = useState("");
-
+    const {visible, text, showNotification} = useNotification();
     const {mutate, isPending} = useBirthDataMutate();
 
     const navigate = useNavigate();
@@ -40,6 +42,9 @@ export function Registration(){
         mutate({name, date, city, country}, {
             onSuccess: (data) => {
                 navigate('/dashboard', {state:data})
+            },
+            onError: () => {
+                showNotification("Error! Check the input data", 15000)
             }
         })
     }
@@ -74,6 +79,7 @@ export function Registration(){
                         </form>
                     </div>
                 </div>
+                <NotificationBox visible={visible} text={text}/>
             </div>
     )
 
