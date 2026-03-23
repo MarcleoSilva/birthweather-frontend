@@ -21,14 +21,9 @@ export default function Dashboard(){
             rounded-lg bg-white shadow-md p-5 m-2 hover:shadow-lg sm:w-2/3 md:w-1/2 lg:w-1/3'>
                     <h1 className="font-(family-name:--primary-font) text-4xl font-bold"><span className="italic">Your</span> day was:</h1>
                     <Divisor/>
-                    <div className='grid grid-cols-2'>
-                        <div className=''>
-                            <Resume />
+                    <div className='grid grid-cols-2 gap-2'>
+                            <Resume cloud={data.isCloudy} temp={data.isTemperature} rain={data.isRaining} avgDegree={data.averageTemperature.toPrecision(3)}/>
                             <Maps data={data.mapsURL}></Maps>
-
-
-                        </div>
-
                     </div>
                 </div>
         </div>
