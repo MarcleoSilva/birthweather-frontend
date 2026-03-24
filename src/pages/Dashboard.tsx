@@ -4,6 +4,7 @@ import type { WeatherStats } from '../components/data/WeatherStats';
 import Maps from '../components/ui/Maps';
 import Divisor from '../components/ui/Divisor';
 import Resume from '../components/ui/Resume';
+import { BoxPlot } from '../components/ui/Plots';
 
 export default function Dashboard(){
     const location = useLocation();
@@ -15,8 +16,13 @@ export default function Dashboard(){
 
 
     return(
-        <div style={{ backgroundImage: isRaining }}
-            className="h-screen w-screen bg-cover bg-center flex justify-center items-center">
+        <div style={{
+                backgroundImage: isRaining,
+                backgroundSize: 'cover', 
+                backgroundPosition: 'center', 
+                backgroundRepeat: 'repeat', 
+            }}
+            className="h-screen w-screen bg-cover bg-center flex justify-center items-center ">
                 <div className='border grid grid-cols-1 gap-3 text-center border-gray-200
             rounded-lg bg-white shadow-md p-5 m-2 hover:shadow-lg sm:w-2/3 md:w-1/2 lg:w-1/3'>
                     <h1 className="font-(family-name:--primary-font) text-4xl font-bold"><span className="italic">Your</span> day was:</h1>
@@ -24,6 +30,15 @@ export default function Dashboard(){
                     <div className='grid grid-cols-2 gap-2'>
                             <Resume cloud={data.isCloudy} temp={data.isTemperature} rain={data.isRaining} avgDegree={data.averageTemperature.toPrecision(3)}/>
                             <Maps data={data.mapsURL}></Maps>
+                    </div>
+                    <div className='grid grid-cols-2 gap-2'>
+                        <div className='border grid grid-cols-1 gap-3 text-center border-gray-200
+            rounded-lg bg-white shadow-md p-5 m-2 hover:shadow-lg w-fit'>
+                            <BoxPlot varArray={data.Temperature} name="Temperature" ></BoxPlot>
+                            <h1 className='font-(family-name:--secondary-font)'>Average: {data.averageTemperature.toPrecision(3)}°C</h1>
+                        </div>
+                        
+                        
                     </div>
                 </div>
         </div>
