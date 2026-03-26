@@ -4,8 +4,7 @@ import type { WeatherStats } from '../components/data/WeatherStats';
 import Maps from '../components/ui/Maps';
 import Divisor from '../components/ui/Divisor';
 import Resume from '../components/ui/Resume';
-import { BoxPlot } from '../components/ui/Plots';
-import DayTemp from '../components/ui/DayTemp';
+import Histogram from '../components/ui/Histogram';
 
 export default function Dashboard(){
     const location = useLocation();
@@ -32,18 +31,7 @@ export default function Dashboard(){
                             <Resume cloud={data.isCloudy} temp={data.isTemperature} rain={data.isRaining} avgDegree={data.averageTemperature.toPrecision(3)}/>
                             <Maps data={data.mapsURL}></Maps>
                     </div>
-                    <div className='grid grid-cols-2 gap-2'>
-                        <div className='border grid grid-cols-1 gap-3 text-center border-gray-200
-            rounded-lg bg-white shadow-md p-5 m-2 hover:shadow-lg w-fit'>
-                            <BoxPlot varArray={data.Temperature} name="Temperature" ></BoxPlot>
-                            <h1 className='font-(family-name:--secondary-font)'>Average: {data.averageTemperature.toPrecision(3)}°C</h1>
-                            
-                        </div>
-                        <DayTemp numArray={data.Temperature} width={200} height={200}></DayTemp>
-                        
-                        
-                        
-                    </div>
+                    <Histogram numArray={data.Temperature} width={450} height={200}></Histogram>
                 </div>
         </div>
     )
