@@ -5,6 +5,7 @@ import Maps from '../components/ui/Maps';
 import Divisor from '../components/ui/Divisor';
 import Resume from '../components/ui/Resume';
 import Histogram from '../components/ui/Histogram';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Dashboard(){
     const location = useLocation();
@@ -13,6 +14,22 @@ export default function Dashboard(){
     console.log(data)
 
     const isRaining = getBackgroundImage({ isRaining: data.isRaining })
+
+
+    const htmlRef = useRef<HTMLDivElement>(null);
+
+    const [relativeWidth, setRelativeWidth] = useState(450);
+
+    useEffect(()=> {
+        const updateWidth = () => {
+            if (htmlRef.current) {
+                setRelativeWidth(htmlRef.current.offsetWidth);
+            }
+        };
+        updateWidth();
+        window.addEventListener('resize', updateWidth);
+        return() => window.removeEventListener('resize', updateWidth);
+    },[])
 
 
     return(
@@ -28,10 +45,15 @@ export default function Dashboard(){
                     <h1 className="font-(family-name:--primary-font) text-4xl font-bold"><span className="italic">Your</span> day was:</h1>
                     <Divisor/>
                     <div className='grid grid-cols-2 gap-2'>
-                            <Resume cloud={data.isCloudy} temp={data.isTemperature} rain={data.isRaining} avgDegree={data.averageTemperature.toPrecision(3)}/>
+                            <Resume cloud={data.isCloudy} temp={data.isTemperature} rain={data.isRaining}/>
                             <Maps data={data.mapsURL}></Maps>
                     </div>
-                    <Histogram numArray={data.Temperature} width={450} height={200}></Histogram>
+                    <div ref={htmlRef} className='border grid grid-cols-1 gap-3 text-center border-gray-200
+            rounded-lg bg-white shadow-md p-2'>
+                        <h1 className='font-(family-name:--secondary-font) text-2xl'>Temperature along the day</h1>
+                        <Histogram numArray={data.Temperature} width={relativeWidth} height={200}></Histogram>
+                    </div>
+                    
                 </div>
         </div>
     )

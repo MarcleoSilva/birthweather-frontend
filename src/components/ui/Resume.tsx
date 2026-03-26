@@ -4,10 +4,9 @@ interface InputProps {
     cloud: string,
     temp: string,
     rain: string,
-    avgDegree: string
 }
 
-export default function Resume({cloud, temp, rain, avgDegree}: InputProps){
+export default function Resume({cloud, temp, rain}: InputProps){
     return(
         <div className="flex justify-baseline items-center gap-3 flex-col border-gray-200 border-2 rounded-2xl
                                 p-3 shadow-md overflow-clip">
@@ -22,7 +21,7 @@ export default function Resume({cloud, temp, rain, avgDegree}: InputProps){
                 </div>
                 <div className="flex gap-2">
                     <IoThermometerSharp size={20}/>
-                    <p>{temp} ({avgDegree}°C)</p>
+                    <p>{temp}</p>
                 </div>
                 <div className="flex gap-2">
                     <IoRainy size={20}/>

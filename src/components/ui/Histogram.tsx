@@ -35,7 +35,7 @@ export default function Histogram({numArray, width, height, pL = 50, pR = 30, pT
                 />
             <line x1={pLeft} y1={pTop} x2={pLeft} y2={pTop + chartHeight + 5} stroke="black" strokeWidth="1" />
 
-            <line x1={pLeft} y1={chartHeight + pTop + 5 } x2={chartWidth + pRight + pLeft} y2={pTop + chartHeight + 5} stroke="black" strokeWidth="1" />
+            <line x1={pLeft} y1={chartHeight + pTop + 5 } x2={chartWidth + pLeft} y2={pTop + chartHeight + 5} stroke="black" strokeWidth="1" />
 
             {[0, 6, 12, 18, 23].map((h) => (
                 <text
